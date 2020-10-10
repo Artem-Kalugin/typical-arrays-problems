@@ -1,21 +1,29 @@
 exports.min = function min(array) {
-    let minimal = a[0];
-    array.foreach((element) => {
-        if (element < minimal) minimal = element;
-    });
-    return minimal;
+    if (array && array.length > 0) {
+        return array.reduce(
+            (min, current) => (min = min > current ? current : min),
+            Infinity
+        );
+    }
+    return 0;
 };
 
 exports.max = function max(array) {
-    let maximum = a[0];
-    array.foreach((element) => {
-        if (element > maximum) maximum = element;
-    });
-    return maximum;
+    if (array && array.length > 0) {
+        return array.reduce(
+            (max, current) => (max = max > current ? max : current),
+            -1 * Infinity
+        );
+    }
+    return 0;
 };
 
 exports.avg = function avg(array) {
-    let sum = 0;
-    array.foreach((element) => (sum += element));
-    return sum / a.lenght;
+    if (array && array.length > 0) {
+        return (
+            array.reduce((sum, current) => (sum = sum + current), 0) /
+            array.length
+        );
+    }
+    return 0;
 };
